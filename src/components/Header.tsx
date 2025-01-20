@@ -1,11 +1,16 @@
+import { NavLink } from "react-router-dom";
+import useAuth from "../customHooks/useAuth";
+
 const Header = () => {
+    const {logOut} = useAuth();
+
     return (
         <div className="flex justify-between">
             <h1>Tasks</h1>
             <ul className="flex gap-2">
-                <li>home</li>
-                <li>profile</li>
-                <li>about</li>
+                <li><NavLink to={'/list/tasks'}>Tasks</NavLink></li>
+                <li><NavLink to={'/list/users'}>Users</NavLink></li>
+                <li><button onClick={logOut}>Logout</button></li>
             </ul>
         </div>
     )
