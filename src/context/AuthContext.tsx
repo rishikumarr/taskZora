@@ -24,8 +24,11 @@ export interface AuthContextType{
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
+    // Check localStorage for authentication status when the app loads
+    const savedIsLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
     // State holds the user log status
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(savedIsLoggedIn);
 
     // state holds login credentials
     const [loginCreds, setLoginCreds] = useState<LoginCredsType>({name: '', password: ''});
@@ -76,15 +79,20 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
         if(name !== "" && password !== ""){
             // Fetching the auth, there is only one admin in auth that why
             const response =  await fetch('http://localhost:3000/auth');
-            // const data = await response.json();
 
-            setError({type: !response.ok, msg: response.ok ? "Success" : "Something went wrong"});
-            setIsLoggedIn(response.ok);
+            if (response.ok) {
+                localStorage.setItem('isLoggedIn', 'true');
+                setIsLoggedIn(true);
+                setError({ type: false, msg: 'Success' });
+            } else {
+                setError({ type: true, msg: 'Something went wrong' });
+            }
         }        
     }
 
     // Function responsible for logging out the user
     const logOut = () => {
+        localStorage.removeItem('isLoggedIn');
         setIsLoggedIn(false);
         setLoginCreds({name: '', password: ''});
     }
@@ -95,7 +103,7 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
 
     useEffect(()=>{
         if(isLoggedIn){
-            navigate('/list/tasks');
+            navigate('/tasks');
         }
         else{
             navigate('/login')

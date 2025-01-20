@@ -1,13 +1,8 @@
 import { useState, createContext } from "react";
-import Modal from "../components/Modal";
-import AddTask from "../components/AddTask";
-import EditTask from "../components/EditTask";
-
-type ModalType = 'add-task' | 'edit-task' | 'add-user' | 'edit-user';
 
 export interface ModalContextType{
-    modalState: {isOpen: boolean, component: React.ReactNode};
-    openModal: (modalType: ModalType, id?:string) => void;
+    isModalOpen: boolean;
+    openModal: () => void;
     closeModal: () => void;
 }
 
@@ -18,37 +13,18 @@ interface ModalProviderProps {
 }
 
 export const ModalProvider:React.FC<ModalProviderProps> = ({children}) => {
-    const [modalState, setModalState] = useState<{isOpen: boolean; component: React.ReactNode}>({isOpen: false, component: null});
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-    const openModal = (modalType: ModalType, id?:string) => {
-        let renderComponent;
-
-        switch(modalType){
-            case 'add-task':
-                renderComponent = <AddTask/>;
-                break;
-            case 'edit-task':
-                renderComponent = <>{id && <EditTask id={id}/>}</>;
-                break;
-            case 'add-user':
-                renderComponent = <div>Add User</div>;
-                break;
-            case 'edit-user':
-                renderComponent = <div>Edit User</div>;
-                break;
-            default:
-                renderComponent = null;
-        }
-
-        setModalState({isOpen: true, component:renderComponent})
+    const openModal = () => {
+        setIsModalOpen(true)
     }
 
     const closeModal = () => {
-        setModalState({isOpen: false, component: null});
+        setIsModalOpen(false);
     }
 
     const values = {
-        modalState,
+        isModalOpen,
         openModal,
         closeModal
     }
@@ -56,7 +32,6 @@ export const ModalProvider:React.FC<ModalProviderProps> = ({children}) => {
     return (
         <ModalContext.Provider value={values}>
             {children}
-            {modalState.isOpen && <Modal>{modalState.component}</Modal>}
         </ModalContext.Provider>
     );
 }
