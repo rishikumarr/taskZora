@@ -81,20 +81,23 @@
 // ]);
 
 import Login from "./pages/Login.tsx";
-import ListTasks from "./pages/list/ListTasks.tsx";
-import EditTask from "./pages/tasks/EditTask.tsx";
-import ListUsers from "./pages/list/ListUsers.tsx";
-import EditUser from "./pages/users/EditUser.tsx";
+
+import TasksLayout from "./TasksLayout.tsx";
+import Tasks from "./pages/tasks/Tasks.tsx";
 import AddTask from "./pages/tasks/AddTask.tsx";
+import EditTask from "./pages/tasks/EditTask.tsx";
+import Task from "./pages/tasks/Task.tsx";
+
+import UsersLayout from "./UsersLayout.tsx";
+import Users from "./pages/users/Users.tsx";
 import AddUser from "./pages/users/AddUser.tsx";
-import User from "./pages/list/User.tsx";
-import Task from "./pages/list/Task.tsx";
+import EditUser from "./pages/users/EditUser.tsx";
+import User from "./pages/users/User.tsx";
+
 import Layout from "./Layout.tsx";
 import App from "./App.tsx";
 
 import { createBrowserRouter } from "react-router-dom";
-import UsersLayout from "./UsersLayout.tsx";
-import TasksLayout from "./TasksLayout.tsx";
 
 const routes = [
   {
@@ -103,7 +106,7 @@ const routes = [
     children: [
       {
         path: "",
-        element: <ListTasks />
+        element: <Tasks />
       },
       {
         path: ":taskId",
@@ -125,7 +128,7 @@ const routes = [
     children: [
       {
         path: "",
-        element: <ListUsers/>
+        element: <Users/>
       }
       ,
       {

@@ -1,30 +1,12 @@
-import { useEffect, useState } from "react";
-import { TaskInterface } from "./utils/interfaces/TaskInterface";
+import { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import useTasks from "./customHooks/useTasks";
 
 const TasksLayout = () => {
-    const [tasks, setTasks] = useState<TaskInterface[]>([]);
+    const {tasks, getAllTasks} = useTasks();
 
     useEffect(()=>{
-        const fetchTasks = async () => {
-            const response = await fetch('http://localhost:3000/todo');
-
-            const data: TaskInterface[] = await response.json();
-
-            try{
-                if(!response.ok){
-                    throw new Error('Failed to fetch tasks');
-                }
-
-                setTasks(data);
-                console.log(tasks);
-            }
-            catch(error){
-                console.log(error);
-            }
-        }
-
-        fetchTasks();
+        getAllTasks();
     }, []);
 
     return (

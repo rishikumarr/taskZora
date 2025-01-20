@@ -1,9 +1,10 @@
 import { useState, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface ModalContextType{
     isModalOpen: boolean;
     openModal: () => void;
-    closeModal: () => void;
+    closeModal: (path:string) => void;
 }
 
 export const ModalContext = createContext<ModalContextType | null>(null);
@@ -13,13 +14,16 @@ interface ModalProviderProps {
 }
 
 export const ModalProvider:React.FC<ModalProviderProps> = ({children}) => {
+    const navigate = useNavigate();
+
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const openModal = () => {
         setIsModalOpen(true)
     }
 
-    const closeModal = () => {
+    const closeModal = (path:string) => {
+        navigate(path);
         setIsModalOpen(false);
     }
 
