@@ -7,7 +7,7 @@ const TasksLayout = () => {
 
     useEffect(()=>{
         getAllTasks();
-    }, []);
+    }, [getAllTasks]);
 
     return (
         <>
@@ -27,10 +27,14 @@ const TasksLayout = () => {
                                 <div>
                                     <ul className="text-xs">
                                         <li><Link to={`/tasks/edit/${id}`}>Edit</Link></li>
-                                        {/* <li><button onClick={openModal}>Edit</button></li> */}
-                                        <li>Delete</li>
+                                         <li>
+                                            <Link to={`/tasks/delete/${id}`}>Delete</Link>
+                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div>
+                                <Link to={`/tasks/${id}`}>View more</Link>
                             </div>
                         </div>)
                     })}

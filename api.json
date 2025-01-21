@@ -31,16 +31,6 @@
       "tags": []
     },
     {
-      "id": "4",
-      "title": "4Learn JavaScript3",
-      "status": "todo",
-      "dueDate": "2020-12-31",
-      "description": "Learn JavaScript basics",
-      "assignedUser": 1,
-      "priority": "high",
-      "tags": []
-    },
-    {
       "id": "6a57",
       "title": "Do zora task",
       "status": "todo",
@@ -77,6 +67,74 @@
       "tags": [
         "work"
       ]
+    },
+    {
+      "id": "7e3b",
+      "title": "Meaning",
+      "description": "dgfdfg",
+      "status": "done",
+      "dueDate": "2025-01-23",
+      "assignedUser": 3,
+      "priority": "high",
+      "tags": [
+        "personal"
+      ]
+    },
+    {
+      "id": "970d",
+      "title": "taskNew",
+      "description": "dfgdfg",
+      "status": "inProgress",
+      "dueDate": "2025-01-16",
+      "assignedUser": 4,
+      "priority": "high",
+      "tags": [
+        "other"
+      ]
+    },
+    {
+      "id": "f3dd",
+      "title": "Testing",
+      "description": "dgdfg",
+      "status": "inProgress",
+      "dueDate": "2025-01-30",
+      "assignedUser": 0,
+      "priority": "low",
+      "tags": []
+    },
+    {
+      "id": "df8d",
+      "title": "RAMUKIHSIR",
+      "description": "dfgdfgdfg",
+      "status": "inProgress",
+      "dueDate": "2025-01-15",
+      "assignedUser": 0,
+      "priority": "low",
+      "tags": [
+        "personal"
+      ]
+    },
+    {
+      "id": "2cd0",
+      "title": "Rishikumar",
+      "description": "dfgdfgdfg",
+      "status": "todo",
+      "dueDate": "2025-01-09",
+      "assignedUser": 0,
+      "priority": "low",
+      "tags": [
+        "personal"
+      ]
+    },
+    {
+      "id": "f294",
+      "title": "ramuk ihsir",
+      "description": "dfgdfg",
+      "status": "todo",
+      "dueDate": "2025-01-01",
+      "assignedUser": 0,
+      "priority": "low",
+      "tags": []
     }
   ],
   "users": [
