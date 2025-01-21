@@ -8,7 +8,9 @@
       "description": "Learn JavaScript basics",
       "assignedUser": 1,
       "priority": "high",
-      "tags": []
+      "tags": [
+        "personal"
+      ]
     },
     {
       "id": "3",
@@ -39,8 +41,9 @@
       "assignedUser": "1",
       "priority": "low",
       "tags": [
-        "dfgdfg",
-        "dfgdfgdf"
+        "work",
+        "personal",
+        "other"
       ]
     },
     {
@@ -103,18 +106,6 @@
       "tags": []
     },
     {
-      "id": "df8d",
-      "title": "RAMUKIHSIR",
-      "description": "dfgdfgdfg",
-      "status": "inProgress",
-      "dueDate": "2025-01-15",
-      "assignedUser": 0,
-      "priority": "low",
-      "tags": [
-        "personal"
-      ]
-    },
-    {
       "id": "2cd0",
       "title": "Rishikumar",
       "description": "dfgdfgdfg",
@@ -127,20 +118,34 @@
       ]
     },
     {
-      "id": "f294",
-      "title": "ramuk ihsir",
-      "description": "dfgdfg",
+      "id": "5565",
+      "title": "new todo",
+      "description": "new t",
       "status": "todo",
-      "dueDate": "2025-01-01",
+      "dueDate": "2025-01-08",
       "assignedUser": 0,
-      "priority": "low",
-      "tags": []
+      "priority": "high",
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "id": "a038",
+      "title": "ertertertterterterterterttertert",
+      "description": "ertertert",
+      "status": "todo",
+      "dueDate": "2025-01-09",
+      "assignedUser": 0,
+      "priority": "high",
+      "tags": [
+        "work"
+      ]
     }
   ],
   "users": [
     {
       "id": "1",
-      "name": "John Doe",
+      "name": "John Doel",
       "email": "john@example.com"
     },
     {
@@ -150,18 +155,63 @@
     },
     {
       "id": "3",
-      "name": "Bean Doe",
-      "email": "bean@example.com"
+      "name": "rishi",
+      "email": "rishi@gmail.co"
     },
     {
       "id": "4",
-      "name": "Dean Doe",
+      "name": "Jane Doe",
       "email": "dean@example.com"
     },
     {
       "id": "427d",
       "name": "Dean Doe",
       "email": "dean@example.com"
+    },
+    {
+      "id": "f057",
+      "name": "gfdg",
+      "email": "dfgdfg"
+    },
+    {
+      "id": "b273",
+      "name": "rishi",
+      "email": "rishi@gmail.com"
+    },
+    {
+      "id": "b86a",
+      "name": "harish",
+      "email": "harish@gmail.com"
+    },
+    {
+      "id": "f4a0",
+      "name": "testing",
+      "email": "testing@gmail.com"
+    },
+    {
+      "id": "8587",
+      "name": "test",
+      "email": "test@gmail.com"
+    },
+    {
+      "id": "2b52",
+      "name": "newUser",
+      "email": "newUser@gmail.com"
+    },
+    {
+      "id": "fbed",
+      "name": "testingaccoutn",
+      "email": "testing@gmail.com"
+    },
+    {
+      "id": "5f4d",
+      "name": "educurve",
+      "email": "rishi@educurve.com"
+    },
+    {
+      "id": "9435",
+      "name": "tet",
+      "email": "dfgdfg"
     }
   ],
   "auth": {

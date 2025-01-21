@@ -8,9 +8,12 @@ interface AppProps{
 const App:React.FC<AppProps> = ({children}) => {
   return (
       <AuthProvider>
-        <div>
-          <h1 className='bg-slate-500 text-center text-slate-50'>TODO app</h1>
-            {children}
+        <div className='w-full min-h-svh bg-gradient-to-b from-slate-400 to-slate-200 flex items-center justify-center overflow-hidden'>
+            <div className='w-[80%] max-w-7xl min-w-80 bg-gradient-to-br from-slate-200 to-slate-300 rounded-lg shadow-lg p-1'>
+              <div className='bg-white w-full h-[90vh] min-h-[30em] p-4 rounded-lg flex flex-col'>
+                {children}
+              </div>
+            </div>
         </div>
       </AuthProvider>
   );

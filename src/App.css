@@ -4,11 +4,34 @@ html{
   font-family: "Poppins", serif;
 }
 
+body{
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#root{
+  min-height: 100vh;
+}
+
+.slide-in{
+  --delay: .1s;
+  opacity: 0;
+  transform: translateX(10%);
+  animation: fadeIn .3s ease var(--delay) forwards;
+}
+
+@keyframes slideIn{
+  to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 .fade-in{
+  --delay: .3s;
   opacity: 0;
   transform: translateY(10%);
-  animation: fadeIn .3s ease .3s forwards;
+  animation: fadeIn .3s ease var(--delay) forwards;
 }
 
 @keyframes fadeIn{
@@ -16,4 +39,29 @@ html{
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.navlink{
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.navlink.active{
+  @apply bg-gradient-to-br from-slate-500 to-slate-700 text-white border-slate-600;
+}
+
+.navlink.active,
+.navlink:hover{
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+[data-status="todo"]{
+  @apply bg-gradient-to-br from-red-200 to-red-300 rounded-md text-red-900 font-semibold shadow-inner border border-red-300
+}
+
+[data-status="inProgress"]{
+  @apply bg-gradient-to-br from-orange-200 to-orange-300 rounded-md text-orange-900 font-semibold shadow-inner border border-orange-300
+}
+
+[data-status="done"]{
+  @apply bg-gradient-to-br from-green-200 to-green-300 rounded-md text-green-900 font-semibold shadow-inner border border-green-300
 }
