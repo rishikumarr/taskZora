@@ -40,7 +40,6 @@ ZORA is a **Task Management Application** built with **React**, **TypeScript**, 
   - `Todo`
   - `In Progress`
   - `Done`
-- Implements a **debounced search** feature to dynamically search for tasks without excessive re-renders.
 
 ---
 
@@ -82,4 +81,4 @@ Below are screenshots of various application pages:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/rishikumarr/taskZora.git
