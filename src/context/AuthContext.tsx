@@ -19,6 +19,7 @@ export interface AuthContextType {
   handleLoginInputs: (event: React.ChangeEvent<HTMLInputElement>) => void;
   submitCreds: (event: React.FormEvent<HTMLFormElement>) => void;
   logOut: () => void;
+  userData: {name: string}
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null);
@@ -29,6 +30,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // State holds the user log status
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(savedIsLoggedIn);
+
+  const [userData, setUserData] = useState<{name: string}>({name: ''});
 
   // state holds login credentials
   const [loginCreds, setLoginCreds] = useState<LoginCredsType>({
@@ -89,9 +92,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       const data = await response.json();
 
-      console.log(data);
-
       if (response.ok) {
+        const {username} = data;
+        setUserData({name: username})
         localStorage.setItem("isLoggedIn", "true");
         setIsLoggedIn(true);
         setError({ type: false, msg: "Success" });
@@ -117,6 +120,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     handleLoginInputs,
     submitCreds,
     logOut,
+    userData
   };
 
   useEffect(() => {
