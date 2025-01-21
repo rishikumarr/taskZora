@@ -14,6 +14,7 @@ const Users = () => {
 
     return (
         <>
+        
     <Header/>
       <div className="flex-1 border border-slate-300 rounded-lg border-dashed px-4 shadow-inner overflow-y-auto overflow-x-hidden">
         <div className="px-2 py-2 border-slate-300 border-dashed mt-2">

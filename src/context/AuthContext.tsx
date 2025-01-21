@@ -87,6 +87,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       // Fetching the auth, there is only one admin in auth that why
       const response = await fetch("http://localhost:3000/auth");
 
+      const data = await response.json();
+
+      console.log(data);
+
       if (response.ok) {
         localStorage.setItem("isLoggedIn", "true");
         setIsLoggedIn(true);

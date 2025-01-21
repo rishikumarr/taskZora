@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useTasks from "../../customHooks/useTasks";
 import Header from "../../components/Header";
@@ -9,8 +9,6 @@ import DeleteIcon from "../../components/DeleteIcon";
 const Tasks = () => {
   const { tasks, getAllTasks, filterByStatus, searchForTask } = useTasks();
 
-  const [isFiltered, setIsFiltered] = useState(false);
-
   useEffect(() => {
     getAllTasks();
   }, [getAllTasks]);
@@ -18,7 +16,6 @@ const Tasks = () => {
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const filter = e.target.value;
     
-    setIsFiltered(filter !== 'all');
     filterByStatus(filter);
   }
 
