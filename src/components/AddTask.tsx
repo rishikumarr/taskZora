@@ -7,7 +7,7 @@ const AddTask = () => {
         <div className="w-full h-full" onClick={(event)=>event.stopPropagation()}>
             <div className="flex justify-between">
                 <h3>Add Task</h3>
-                <button onClick={closeModal}>X</button>
+                <button onClick={()=>closeModal('/tasks')}>X</button>
             </div>
         </div>
     )

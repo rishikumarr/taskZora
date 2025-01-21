@@ -52,6 +52,31 @@
         "dfgdfg",
         "dfgdfgdf"
       ]
+    },
+    {
+      "id": "957d",
+      "title": "dfgdfg",
+      "description": "dfgdfgdf",
+      "status": "inProgress",
+      "dueDate": "2025-01-16",
+      "assignedUser": 4,
+      "priority": "low",
+      "tags": [
+        "work",
+        "other"
+      ]
+    },
+    {
+      "id": "10b1",
+      "title": "newTask",
+      "description": "dfgdfg",
+      "status": "todo",
+      "dueDate": "2025-01-23",
+      "assignedUser": 0,
+      "priority": "high",
+      "tags": [
+        "work"
+      ]
     }
   ],
   "users": [

@@ -5,8 +5,9 @@ interface useTasksType{
     tasks:TaskInterface[];
     getAllTasks: ()=>void;
     getTaskById: (taskId: string)=>Promise<TaskInterface | null>;
-    editTaskById: (taskId: string)=>void;
-    deleteTaskById: (taskId: string)=>void;
+    addTask: (task: TaskInterface) => Promise<void>;
+    // editTaskById: (taskId: string)=>void;
+    // deleteTaskById: (taskId: string)=>void;
 }
 
 const useTasks = ():useTasksType => {
@@ -49,15 +50,38 @@ const useTasks = ():useTasksType => {
         }
     }
 
-    const editTaskById = (taskId: string) => {
+    const addTask = async(task: TaskInterface) => {
+        try{
+            const response = await fetch(endPoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(task),
+            });
 
+            if(!response.ok){
+                throw new Error('Error in adding the task');
+            }
+            
+            const newTask = await response.json();
+
+            setTasks(prevTasks => [...prevTasks, newTask]);
+        }
+        catch(error){
+            console.log(error);
+        }
     }
 
-    const deleteTaskById = (taskId: string) => {
+    // const editTaskById = (taskId: string) => {
 
-    }
+    // }
 
-    return {tasks, getAllTasks, getTaskById, editTaskById, deleteTaskById}
+    // const deleteTaskById = (taskId: string) => {
+
+    // }
+
+    return {tasks, getAllTasks, getTaskById, addTask}
 }
 
 export default useTasks;
