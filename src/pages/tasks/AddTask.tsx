@@ -4,6 +4,7 @@ import useModal from "../../customHooks/useModal";
 import useUsers from "../../customHooks/useUsers";
 import { TaskInterface } from "../../utils/interfaces/TaskInterface";
 import useTasks from "../../customHooks/useTasks";
+import CloseIcon from "../../components/CloseIcon";
 
 const AddTask = () => {
   const { closeModal } = useModal();
@@ -72,75 +73,110 @@ const AddTask = () => {
   return (
     <Modal goBackTo={"/tasks"}>
       <div
-        className="w-full min-h-full flex flex-col gap-2"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <div className="flex justify-between">
-          <h3>Add Task</h3>
-          <button onClick={() => closeModal("/tasks")}>X</button>
+        className="w-full min-h-80 flex flex-col gap-2">
+        <div className="flex justify-between mb-2">
+          <h3 className="font-bold italic bg-gradient-to-br from-slate-500 to-slate-800 text-transparent bg-clip-text text-xl">Add Task</h3>
+          <button onClick={() => closeModal("/tasks")} className="w-6 h-6" title="Close">
+            <CloseIcon className="text-slate-600 hover:text-slate-800 transition-all"/>
+          </button>
         </div>
-        <div>
+        <hr className="border border-slate-400/70 my-2 border-dashed"/>
+        <div className="flex-1 flex flex-col gap-4 justify-between py-2">
+        <div className="flex flex-col gap-1">
+        <span className="text-xs font-semibold text-slate-700">Task Title</span>
           <input
             type="text"
             name="title"
             placeholder="Enter todo"
             onChange={handleInputs}
             ref={taskNameRef}
+            className="text-sm h-9 rounded-md px-4 text-slate-800 focus:outline-gray-500"
           />
+          </div>
+          <div className="flex flex-col gap-1">
+              <span className="text-xs font-semibold text-slate-700">Task Description</span>
           <input
             type="text"
             name="description"
             placeholder="Enter todo description"
             onChange={handleInputs}
             ref={taskDescriptionRef}
+            className="text-sm h-9 rounded-md px-4 text-slate-800 focus:outline-gray-500"
           />
-          <select name="status" onChange={handleInputs}>
-            <option value="todo">To Do</option>
-            <option value="inProgress">In Progress</option>
-            <option value="done">Done</option>
-          </select>
-          <input type="date" name="dueDate" onChange={handleInputs} ref={taskDueRef}/>
-          <select name="assignedUser" onChange={handleInputs}>
-            {users.map((user) => {
-              const { id, name } = user;
-              return (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              );
-            })}
-          </select>
+          </div>
+          <div className="flex flex-wrap gap-5">
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-semibold text-slate-700">Task Status</span>
+            <select name="status" onChange={handleInputs} className="rounded-md px-2 py-1 focus:outline-gray-500 text-sm">
+              <option value="todo">To Do</option>
+              <option value="inProgress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-semibold text-slate-700">Due Date</span>
+            <input type="date" name="dueDate" onChange={handleInputs} ref={taskDueRef}  className="rounded-md px-2 py-1 focus:outline-gray-500 text-sm"/>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-semibold text-slate-700">Task Status</span>
+            <select name="assignedUser" onChange={handleInputs} className="rounded-md px-2 py-1 focus:outline-gray-500 text-sm">
+              {users.map((user) => {
+                const { id, name } = user;
+                return (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                );
+              })}
+            </select>
+            </div>
+          </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-semibold text-slate-700">Tags</span>
+              <ul className="flex gap-2">
+                {tags.map((tag, index) => (
+                  <li key={`tag-${index}`} data-tag={tag} className={`capitalize border px-4 py-1 rounded-full border-slate-400 text-xs cursor-pointer font-semibold ${task.tags.includes(tag) ? `bg-gradient-to-br from-slate-500 to-slate-700 text-white` : `bg-white text-slate-700`}`} onClick={()=>tagsHandler(tag)}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-semibold text-slate-700">Task Priority</span>
+              <div className="w-fit flex items-center gap-3">
 
-          <ul>
-            {tags.map((tag, index) => (
-              <li key={`tag-${index}`} data-tag={tag} className={`capitalize border ${task.tags.includes(tag) ? `bg-gray-200` : `bg-white`}`} onClick={()=>tagsHandler(tag)}>
-                {tag}
-              </li>
-            ))}
-          </ul>
+            <label htmlFor="low" className="flex items-center gap-2 cursor-pointer border border-slate-400 bg-slate-300 px-3 py-1 rounded-full">
+            <input
+              type="radio"
+              name="priority"
+              value="low"
+              id="low"
+              onChange={handleInputs}
+              checked={task.priority === 'low'}
+              className="accent-slate-700"
+            />
+              <span className="text-xs font-semibold text-slate-800">Low</span>
 
-          <label htmlFor="low">Low</label>
-          <input
-            type="radio"
-            name="priority"
-            value="low"
-            id="low"
-            onChange={handleInputs}
-            checked={task.priority === 'low'}
-          />
-          <label htmlFor="high">High</label>
-          <input
-            type="radio"
-            name="priority"
-            value="high"
-            id="high"
-            onChange={handleInputs}
-            checked={task.priority === 'high'}
-          />
+            </label>
+            <label htmlFor="high" className="flex items-center gap-2 cursor-pointer border border-slate-400  bg-slate-300 px-3 py-1 rounded-full">
+            <input
+              type="radio"
+              name="priority"
+              value="high"
+              id="high"
+              onChange={handleInputs}
+              checked={task.priority === 'high'}
+              className="accent-slate-700"
+            />
+              <span className="text-xs font-semibold text-slate-800">High</span>
+            </label>
+              </div>
+              </div>
         </div>
-        <div>
-          <button onClick={() => closeModal("/tasks")}>Cancel</button>
-          <button onClick={handleAddTask}>Add Task</button>
+        <hr className="border border-slate-400/70 my-2 border-dashed" />
+        <div className="flex justify-end gap-3">
+          <button onClick={() => closeModal("/tasks")} className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-br from-gray-100 to-gray-300 text-gray/85 hover:text-gray border border-gray-400 text-sm shadow-lg active:scale-95 transition">Cancel</button>
+          <button onClick={handleAddTask} className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 text-white/85 hover:text-white border-slate-600 text-sm shadow-lg active:scale-95 transition">Add Task</button>
         </div>
       </div>
     </Modal>

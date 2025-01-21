@@ -1,5 +1,5 @@
 import { Outlet, Link} from "react-router-dom";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import useAuth from "./customHooks/useAuth";
 import { ModalProvider } from "./context/ModalContext";
 
@@ -22,7 +22,6 @@ const Layout = () => {
       isLoggedIn ? (
         <>
           <ModalProvider>
-            <Header />
             <Outlet />
           </ModalProvider>
           <div id="modal-root"></div>

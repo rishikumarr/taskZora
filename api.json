@@ -1,26 +1,16 @@
 {
   "todo": [
     {
-      "id": "1",
-      "title": "1Learn JavaScript",
-      "status": "todo",
-      "dueDate": "2020-12-31",
-      "description": "Learn JavaScript basics",
-      "assignedUser": 1,
-      "priority": "high",
-      "tags": [
-        "personal"
-      ]
-    },
-    {
       "id": "3",
-      "title": "3Learn JavaScript1",
+      "title": "Task3",
       "status": "inProgress",
       "dueDate": "2020-12-31",
       "description": "Learn JavaScript basics",
       "assignedUser": 1,
       "priority": "high",
-      "tags": []
+      "tags": [
+        "work"
+      ]
     },
     {
       "id": "2",
@@ -136,6 +126,18 @@
       "status": "todo",
       "dueDate": "2025-01-09",
       "assignedUser": 0,
+      "priority": "high",
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "id": "9ceb",
+      "title": "Design needs to be completed",
+      "description": "dfgdfgdfgdfg",
+      "status": "todo",
+      "dueDate": "2025-01-16",
+      "assignedUser": null,
       "priority": "high",
       "tags": [
         "work"
