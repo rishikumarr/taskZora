@@ -39,7 +39,7 @@ const Users = () => {
                     <div
                       className="flex flex-col gap-2 border border-slate-300 hover:border-slate-400 transition-all w-60 bg-gradient-to-br from-slate-100 to-slate-50 p-4 rounded-lg shadow-sm fade-in"
                       key={`user-${id}`}
-                      style={{ "--delay": `${index * 0.1}s` }}
+                      style={{ "--delay": `${index * 0.1}s` } as React.CSSProperties}
                     >
                       <div className="flex justify-between">
                         <p className="text-base truncate max-w-40 text-slate-800 font-medium capitalize">

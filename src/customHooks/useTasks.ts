@@ -9,6 +9,8 @@ interface useTasksType {
   addTask: (task: TaskInterface) => Promise<void>;
   editTaskById: (taskId: string, updatedTask: TaskInterface) => Promise<void>;
   deleteTaskById: (taskId: string) => Promise<void>;
+  filterByStatus: (status: string) => void;
+  searchForTask: (searchString: string) => void;
 }
 
 const useTasks = (): useTasksType => {
@@ -127,6 +129,39 @@ const useTasks = (): useTasksType => {
     }
   };
 
+  const filterByStatus = async(status: string) => {
+    try{
+      const fetchURL = status !== 'all' ? `${endPoint}?status=${status}` : `${endPoint}`;
+
+      const response = await fetch(fetchURL);
+
+      if(!response.ok){
+        throw new Error('Failed to filter');
+      }
+
+      const data: TaskInterface[] = await response.json();
+      setTasks(data);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
+  const searchForTask = async(searchString: string) => {
+    try{
+      const response = await fetch(`${endPoint}?title=${searchString}`);
+
+      if(!response.ok){
+        throw new Error('Failed to search');
+      }
+      const data: TaskInterface[] = await response.json();
+      setTasks(data);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
   return {
     tasks,
     getAllTasks,
@@ -134,6 +169,8 @@ const useTasks = (): useTasksType => {
     addTask,
     editTaskById,
     deleteTaskById,
+    filterByStatus,
+    searchForTask
   };
 };
 

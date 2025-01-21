@@ -13,16 +13,6 @@
       ]
     },
     {
-      "id": "2",
-      "title": "2Learn JavaScript2",
-      "status": "done",
-      "dueDate": "2020-12-31",
-      "description": "Learn JavaScript basics",
-      "assignedUser": 1,
-      "priority": "low",
-      "tags": []
-    },
-    {
       "id": "6a57",
       "title": "Do zora task",
       "status": "todo",
@@ -59,18 +49,6 @@
       "priority": "high",
       "tags": [
         "work"
-      ]
-    },
-    {
-      "id": "7e3b",
-      "title": "Meaning",
-      "description": "dgfdfg",
-      "status": "done",
-      "dueDate": "2025-01-23",
-      "assignedUser": 3,
-      "priority": "high",
-      "tags": [
-        "personal"
       ]
     },
     {

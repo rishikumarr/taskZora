@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useTasks from "../../customHooks/useTasks";
 import Header from "../../components/Header";
@@ -7,11 +7,26 @@ import EditIcon from "../../components/EditIcon";
 import DeleteIcon from "../../components/DeleteIcon";
 
 const Tasks = () => {
-  const { tasks, getAllTasks } = useTasks();
+  const { tasks, getAllTasks, filterByStatus, searchForTask } = useTasks();
+
+  const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
     getAllTasks();
   }, [getAllTasks]);
+
+  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const filter = e.target.value;
+    
+    setIsFiltered(filter !== 'all');
+    filterByStatus(filter);
+  }
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchVal = e.target.value;
+
+    searchForTask(searchVal);
+  }
 
   return (
     <>
@@ -23,24 +38,38 @@ const Tasks = () => {
           </h3>
         </div>
         <div className="relative">
-          <div className="flex justify-end my-2 sticky inset-0 top-5 z-10">
+          <div className="flex items-center lg:px-4 rounded-full lg:border border-slate-300 lg:py-2 justify-between flex-col lg:flex-row gap-3 my-2 lg:sticky inset-0 top-5 z-10 lg:bg-slate-100/50 lg:backdrop-blur-md">
+            <div className="self-start">
+            <div className="flex flex-col lg:flex-row gap-1 items-center">
+            <span className="text-xs font-semibold text-slate-700">Filter By Status:</span>
+              <select onChange={handleFilterChange} className="rounded-full px-2 py-1 outline-none text-xs border border-slate-300 focus:border-slate-400 bg-slate-100">
+                <option value="all">All</option>
+                <option value="todo">Todo</option>
+                <option value="inProgress">In Progress</option>
+                <option value="done">Done</option>
+              </select>
+            </div>
+            </div>
+          <div className="flex-1 text-center">
+              <input type="search" className="w-full max-w-80 bg-slate-100 border border-slate-300 rounded-full px-3 py-1 text-sm outline-none focus:border-slate-400 focus:shadow-inner text-slate-700" placeholder="Search for Task" onChange={handleSearch}/>
+            </div>
             <Link
               to="/tasks/add"
-              className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 text-white/85 hover:text-white border-slate-600 text-sm shadow-lg active:scale-95 transition"
+              className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 text-white/85 hover:text-white border-slate-600 text-sm shadow-lg active:scale-95 transition self-end"
             >
               Add task
             </Link>
           </div>
-          <div>
+          <div className="mt-6">
             <div className="flex flex-wrap justify-center gap-4">
-              {tasks &&
-                tasks.map((task, index) => {
+              {tasks && tasks.length > 0 ?
+                (tasks.map((task, index) => {
                   const { id, title } = task;
                   return (
                     <div
                       className="flex flex-col gap-2 border border-slate-300 hover:border-slate-400 transition-all w-60 bg-gradient-to-br from-slate-100 to-slate-50 p-4 rounded-lg shadow-sm fade-in"
                       key={`task-${id}`}
-                      style={{ "--delay": `${index * 0.1}s` }}
+                      style={{ "--delay": `${index * 0.1}s` } as React.CSSProperties}
                     >
                       <div className="flex justify-between">
                         <p className="text-base truncate max-w-40 text-slate-800 font-medium capitalize">
@@ -133,7 +162,7 @@ const Tasks = () => {
                       </div>
                     </div>
                   );
-                })}
+                })) : <p>No Tasks</p>}
             </div>
           </div>
         </div>
