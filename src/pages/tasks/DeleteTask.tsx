@@ -27,7 +27,7 @@ const DeleteTask = () => {
         </div>
         <hr className="border border-slate-400/70 my-2 border-dashed" />
         <div className="flex-1 flex items-center justify-center">
-            <p>Do you really want to delete this task?</p>
+            <p className="text-slate-700 font-semibold">Do you really want to delete this task?</p>
         </div>
             <hr className="border border-slate-400/70 my-2 border-dashed" />
             <div className="flex justify-end gap-3">

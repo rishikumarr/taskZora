@@ -152,8 +152,8 @@
     },
     {
       "id": "2",
-      "name": "Jean Doe",
-      "email": "jean@example.com"
+      "name": "Jean Doel",
+      "email": "jean@example.co"
     },
     {
       "id": "3",
@@ -162,18 +162,13 @@
     },
     {
       "id": "4",
-      "name": "Jane Doe",
+      "name": "Jane Doel",
       "email": "dean@example.com"
     },
     {
       "id": "427d",
       "name": "Dean Doe",
       "email": "dean@example.com"
-    },
-    {
-      "id": "f057",
-      "name": "gfdg",
-      "email": "dfgdfg"
     },
     {
       "id": "b273",
@@ -211,9 +206,9 @@
       "email": "rishi@educurve.com"
     },
     {
-      "id": "9435",
-      "name": "tet",
-      "email": "dfgdfg"
+      "id": "2261",
+      "name": "harishkarthik",
+      "email": "harishkarthik@gmail.com"
     }
   ],
   "auth": {
